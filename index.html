@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO + SOCIAL METADATA
+       ============================================================ -->
+  <title>A.K.A Consulting | Custom AI Tools for Law and Accounting Firms in the GTA</title>
+  <meta name="description" content="A.K.A Consulting builds custom AI tools for law and accounting firms in the Greater Toronto Area. Save hours, automate admin, and serve clients faster. Book a free audit call." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="A.K.A Consulting | Custom AI Tools for Law and Accounting Firms" />
+  <meta property="og:description" content="We build custom AI tools for law and accounting firms in the Greater Toronto Area. Save hours, automate admin, serve clients faster." />
+  <!-- TODO: replace with a real 1200x630 OG image before launch -->
+  <meta property="og:image" content="og-image-placeholder.png" />
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="A.K.A Consulting | Custom AI Tools for Law and Accounting Firms" />
+  <meta name="twitter:description" content="We build custom AI tools for law and accounting firms in the Greater Toronto Area. Book a free audit call." />
+  <meta name="twitter:image" content="og-image-placeholder.png" />
+
+  <!-- TODO: replace with a real favicon before launch -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2313294B'/><text x='50' y='68' font-family='sans-serif' font-size='52' font-weight='700' fill='white' text-anchor='middle'>A<tspan fill='%2314B8A6'>.</tspan></text></svg>" />
+
+  <!-- ============================================================
+       FONTS (Space Grotesk for headings, Inter for body)
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — edit the palette and type scale here only.
+       ============================================================ */
+    :root {
+      /* Colors */
+      --bg:            #FFFFFF;   /* background primary */
+      --bg-alt:        #F6F8FB;   /* alternating sections */
+      --ink:           #0F1B2D;   /* primary text, deep navy */
+      --slate:         #5A6B82;   /* secondary text */
+      --navy:          #13294B;   /* dark sections, footer, headers */
+      --accent:        #14B8A6;   /* CTAs, links, highlights (teal) */
+      --accent-dark:   #0E9488;   /* hover state */
+      --hairline:      #E4E9F0;   /* subtle borders */
+      --green:         #16A34A;   /* success / result metrics */
+
+      /* Surfaces */
+      --card-shadow:        0 1px 3px rgba(15, 27, 45, 0.06);
+      --card-shadow-hover:  0 10px 30px rgba(15, 27, 45, 0.10);
+
+      /* Layout */
+      --maxw: 1140px;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --section-pad: 96px;
+
+      /* Type */
+      --font-head: 'Space Grotesk', 'Inter', sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+
+    /* ============================================================
+       RESET + BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+      /* keep section headings clear of the fixed nav when jumping to anchors */
+      scroll-padding-top: 88px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--slate);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    h1, h2, h3 {
+      font-family: var(--font-head);
+      color: var(--ink);
+      margin: 0;
+    }
+    p { margin: 0; }
+    a { color: var(--accent); text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+    button { font-family: inherit; cursor: pointer; }
+
+    /* Visible focus rings for keyboard users */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    /* ============================================================
+       LAYOUT HELPERS
+       ============================================================ */
+    .wrap {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    section { padding: var(--section-pad) 0; }
+    .alt { background: var(--bg-alt); }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 16px;
+    }
+    h1 {
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 600;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-size: clamp(32px, 4.5vw, 40px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+    }
+    h3 {
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+    .lead { font-size: clamp(18px, 2vw, 20px); line-height: 1.6; }
+    .section-head { max-width: 720px; margin-bottom: 56px; }
+    .section-head h2 { margin-bottom: 16px; }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 0 24px;
+      border-radius: var(--radius);
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      transition: background-color .2s ease, color .2s ease,
+                  border-color .2s ease, transform .08s ease;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--hairline);
+    }
+    .btn-ghost:hover { border-color: var(--navy); }
+    .btn-block { width: 100%; }
+
+    /* ============================================================
+       STICKY NAV
+       ============================================================ */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      transition: background-color .3s ease, box-shadow .3s ease,
+                  border-color .3s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom-color: var(--hairline);
+    }
+    .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    /* Wordmark */
+    .wordmark {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+    }
+    .wordmark .dot { color: var(--accent); }
+    .wordmark .sub { font-weight: 400; color: var(--slate); font-size: 16px; margin-left: 6px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+    .nav-links a:not(.btn)::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width .2s ease;
+    }
+    .nav-links a:not(.btn):hover::after { width: 100%; }
+
+    .nav-cta { margin-left: 4px; }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--hairline);
+      border-radius: 10px;
+      width: 44px; height: 44px;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 24px 24px;
+      background: #fff;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--ink);
+      font-weight: 500;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .mobile-menu .btn { margin-top: 16px; }
+
+    @media (max-width: 840px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================================================
+       DOT-GRID MOTIF (hero + final CTA backdrops)
+       ============================================================ */
+    .dotgrid {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(var(--hairline) 1px, transparent 1px);
+      background-size: 28px 28px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+              mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+      pointer-events: none;
+    }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      position: relative;
+      padding-top: 168px;
+      padding-bottom: 112px;
+      overflow: hidden;
+    }
+    .hero .wrap { position: relative; z-index: 1; max-width: 880px; text-align: center; }
+    .hero h1 { margin-bottom: 24px; }
+    .hero .lead { color: var(--slate); max-width: 60ch; margin: 0 auto 36px; }
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .trust-line { margin-top: 24px; font-size: 14px; color: var(--slate); }
+
+    /* ============================================================
+       CARD GRIDS
+       ============================================================ */
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 900px) {
+      .grid, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .grid, .grid-2, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--card-shadow);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: var(--card-shadow-hover); }
+    .card .icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: rgba(20, 184, 166, 0.10);
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+    .card h3 { color: var(--ink); margin-bottom: 8px; }
+    .card p { font-size: 15.5px; }
+
+    /* ============================================================
+       HOW IT WORKS — timeline
+       ============================================================ */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      counter-reset: step;
+    }
+    @media (max-width: 700px) { .steps { grid-template-columns: 1fr; } }
+    .step .num {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 48px;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .step h3 { color: var(--ink); margin-bottom: 8px; }
+
+    /* ============================================================
+       WHY US — dark section
+       ============================================================ */
+    .dark { background: var(--navy); }
+    .dark h2 { color: #fff; }
+    .dark .eyebrow { color: var(--accent); }
+    .dark .value h3 { color: #fff; }
+    .dark .value p { color: #AEBBD0; }
+    .dark .value .icon {
+      background: rgba(20, 184, 166, 0.16);
+      color: var(--accent);
+    }
+    .values {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 36px 48px;
+    }
+    @media (max-width: 700px) { .values { grid-template-columns: 1fr; } }
+    .value .icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    /* ============================================================
+       RESULTS
+       ============================================================ */
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+    @media (max-width: 820px) { .results-grid { grid-template-columns: 1fr; } }
+    .quote-card {
+      background: #fff;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .quote-card blockquote {
+      margin: 0 0 24px;
+      font-family: var(--font-head);
+      font-weight: 500;
+      font-size: clamp(22px, 3vw, 28px);
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .quote-card .attr { font-size: 15px; color: var(--ink); font-weight: 500; }
+    .quote-card .note { font-size: 13px; color: var(--slate); margin-top: 6px; }
+    .metrics {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .metric {
+      background: #fff;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      box-shadow: var(--card-shadow);
+    }
+    .metric .big {
+      font-family: var(--font-head);
+      font-weight: 600;
+      font-size: 36px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .metric .label { font-size: 14px; color: var(--slate); margin-top: 6px; }
+
+    /* ============================================================
+       FINAL CTA
+       ============================================================ */
+    .final {
+      position: relative;
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .final .dotgrid {
+      background-image: radial-gradient(rgba(255,255,255,0.10) 1px, transparent 1px);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%);
+              mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, #000 40%, transparent 80%);
+    }
+    .final .wrap { position: relative; z-index: 1; }
+    .final-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+    @media (max-width: 820px) { .final-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .final h2 { color: #fff; margin-bottom: 16px; }
+    .final .lead { color: #AEBBD0; }
+    .final .email-line { margin-top: 20px; font-size: 15px; color: #AEBBD0; }
+    .final .email-line a { color: var(--accent); }
+
+    /* Form */
+    .form {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.20);
+    }
+    .field { margin-bottom: 18px; }
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--ink);
+      background: #fff;
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      transition: border-color .2s ease;
+    }
+    .field input:focus,
+    .field textarea:focus { border-color: var(--accent); outline: none; }
+    .field textarea { resize: vertical; min-height: 96px; }
+    .field .err {
+      display: none;
+      font-size: 13px;
+      color: #DC2626;
+      margin-top: 6px;
+    }
+    .field.invalid input,
+    .field.invalid textarea { border-color: #DC2626; }
+    .field.invalid .err { display: block; }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 24px 8px;
+    }
+    .form-success.show { display: block; }
+    .form-success .check {
+      width: 56px; height: 56px;
+      margin: 0 auto 16px;
+      border-radius: 50%;
+      background: rgba(22,163,74,0.12);
+      color: var(--green);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .form-success h3 { color: var(--ink); margin-bottom: 8px; }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--navy);
+      color: #AEBBD0;
+      padding: 64px 0 28px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 760px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+    .footer .wordmark { color: #fff; }
+    .footer .wordmark .sub { color: #AEBBD0; }
+    .footer h4 {
+      font-family: var(--font-body);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      margin: 0 0 16px;
+      font-weight: 500;
+    }
+    .footer ul { list-style: none; margin: 0; padding: 0; }
+    .footer li { margin-bottom: 10px; }
+    .footer a { color: #AEBBD0; }
+    .footer a:hover { color: #fff; }
+    .footer .tag { margin: 14px 0 0; max-width: 36ch; font-size: 14px; }
+    .footer-bottom {
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      justify-content: space-between;
+      font-size: 13px;
+    }
+    .footer-bottom a { color: #AEBBD0; }
+
+    /* ============================================================
+       SCROLL REVEAL ANIMATION (fade + rise)
+       ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .5s ease-out, transform .5s ease-out;
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    /* stagger children within a grid */
+    .reveal.in .card,
+    .reveal.in .step,
+    .reveal.in .value,
+    .reveal.in .metric { animation: rise .5s ease-out both; }
+    .reveal.in :is(.card,.step,.value,.metric):nth-child(2) { animation-delay: .08s; }
+    .reveal.in :is(.card,.step,.value,.metric):nth-child(3) { animation-delay: .16s; }
+    .reveal.in :is(.card,.step,.value,.metric):nth-child(4) { animation-delay: .24s; }
+    .reveal.in :is(.card,.step,.value,.metric):nth-child(5) { animation-delay: .32s; }
+    .reveal.in :is(.card,.step,.value,.metric):nth-child(6) { animation-delay: .40s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .reveal.in :is(.card,.step,.value,.metric) { animation: none; }
+      .btn:active { transform: none; }
+    }
+
+    /* Mobile section padding */
+    @media (max-width: 700px) {
+      :root { --section-pad: 64px; }
+      .hero { padding-top: 132px; padding-bottom: 80px; }
+      .hero-cta .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       STICKY NAVIGATION
+       ============================================================ -->
+  <header>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <div class="nav-inner">
+        <a href="#top" class="wordmark" aria-label="A.K.A Consulting home">A<span class="dot">.</span>K<span class="dot">.</span>A<span class="sub">Consulting</span></a>
+
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="nav-cta"><a href="#contact" class="btn btn-primary">Book a free audit call</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Services</a>
+        <a href="#tools">Tools</a>
+        <a href="#how">How it works</a>
+        <a href="#why">Why us</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary btn-block">Book a free audit call</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================================
+         SECTION 1 — HERO
+         ============================================================ -->
+    <section class="hero">
+      <div class="dotgrid" aria-hidden="true"></div>
+      <div class="wrap reveal">
+        <p class="eyebrow">AI consulting for law and accounting firms</p>
+        <h1>Custom AI tools that make your firm the most efficient in the room.</h1>
+        <p class="lead">A.K.A Consulting builds AI tools tailored to your firm, trains your team to use them, and gives you back the hours your people lose to repetitive work. Built for you, not off a shelf.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Book a free audit call</a>
+          <a href="#tools" class="btn btn-ghost">See what we build</a>
+        </div>
+        <p class="trust-line">Based in the Greater Toronto Area. No technical team required on your end.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 2 — THE PROBLEM
+         ============================================================ -->
+    <section class="alt" id="problem">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">The cost of doing it the old way</p>
+          <h2>Your best people are stuck doing work AI could handle.</h2>
+        </div>
+        <div class="grid reveal">
+          <!-- Card: documents -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+            </div>
+            <h3>Hours lost to documents.</h3>
+            <p>Reviewing, drafting, and searching files eats time your team could bill or spend on clients.</p>
+          </article>
+          <!-- Card: admin -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.7 9.7 0 0 0-6.7 2.8L3 8"/><path d="M3 3v5h5"/></svg>
+            </div>
+            <h3>Repetitive admin.</h3>
+            <p>Intake, follow-ups, scheduling, and summaries are done by hand, over and over.</p>
+          </article>
+          <!-- Card: falling behind -->
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7h-6M21 7v6"/></svg>
+            </div>
+            <h3>Falling behind.</h3>
+            <p>Firms that adopt AI now will out-serve and out-price the ones that wait.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 3 — WHAT WE DO (SERVICES)
+         ============================================================ -->
+    <section id="services">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">What we do</p>
+          <h2>Four ways we put AI to work for your firm.</h2>
+        </div>
+        <div class="grid grid-4 reveal">
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3>AI Opportunity Audit.</h3>
+            <p>We map where your firm loses time and deliver a clear, prioritized plan for what to build first. The low-risk place to start.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 1 5 5l-1.5 1.5"/><path d="M9.3 17.7a4 4 0 0 1-5-5l1.5-1.5"/><path d="m8 16 8-8"/></svg>
+            </div>
+            <h3>Custom AI tool builds.</h3>
+            <p>We design, build, and deploy tools that solve one painful problem at a time, tailored to how your firm actually works.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <h3>AI training for your team.</h3>
+            <p>Tools only help if people use them. We run hands-on training and rollout so adoption sticks.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg>
+            </div>
+            <h3>AI-enhanced websites.</h3>
+            <p>Modernize your site with smart search, chat, and automated lead follow-up built in.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 4 — TOOLS WE BUILD
+         ============================================================ -->
+    <section class="alt" id="tools">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Tools we build</p>
+          <h2>Real tools, custom-built for your firm.</h2>
+          <p class="lead" style="color:var(--slate);margin-top:16px;">Every tool is built around your firm's files, templates, and workflow. Here is the kind of thing we build.</p>
+        </div>
+        <div class="grid reveal">
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <h3>Knowledge search.</h3>
+            <p>Ask a question across all your firm's files and get an answer with its source, instantly.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </div>
+            <h3>Drafting assistant.</h3>
+            <p>Drafts contracts, letters, and filings from your own templates and precedents.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+            </div>
+            <h3>Client intake automation.</h3>
+            <p>Captures new-client information, drafts the paperwork, and routes it where it belongs.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>
+            </div>
+            <h3>Meeting agent.</h3>
+            <p>Transcribes meetings, summarizes them, and turns them into a tracked to-do list, plugged into your systems.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3>Billing follow-up.</h3>
+            <p>Chases overdue invoices with smart, polite reminders so you get paid faster.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+            </div>
+            <h3>Day-to-day automations.</h3>
+            <p>The repetitive tasks unique to your firm, handled quietly in the background.</p>
+          </article>
+        </div>
+        <p class="reveal" style="margin-top:28px;font-size:14px;color:var(--slate);max-width:70ch;">Built custom for your firm. As we build for more firms like yours, we can stand up proven tools faster and tailor them to you.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 5 — HOW IT WORKS
+         ============================================================ -->
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2>From first call to working tool in three steps.</h2>
+        </div>
+        <div class="steps reveal">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Free audit call.</h3>
+            <p>A 30-minute conversation to understand your firm and spot the biggest opportunities.</p>
+          </div>
+          <div class="step">
+            <div class="num">2</div>
+            <h3>We build the right tool.</h3>
+            <p>We design and build a tool tailored to your highest-value problem, with a fixed scope and price.</p>
+          </div>
+          <div class="step">
+            <div class="num">3</div>
+            <h3>We train and support.</h3>
+            <p>We onboard your team and keep improving the tool as your needs grow.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 6 — WHY A.K.A (dark)
+         ============================================================ -->
+    <section class="dark" id="why">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Why A.K.A Consulting</p>
+          <h2>We don't just advise. We build.</h2>
+        </div>
+        <div class="values reveal">
+          <div class="value">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m14.7 6.3 1.4 1.4M3 21l1-4 11-11 3 3-11 11-4 1Z"/><path d="M14 4l3 3"/></svg>
+            </div>
+            <h3>We build, not just talk.</h3>
+            <p>Most AI consultants hand you a slide deck. We hand you a working tool.</p>
+          </div>
+          <div class="value">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h3>Real AI engineering.</h3>
+            <p>Built by an engineer who works on production AI systems, not someone who took a prompt course.</p>
+          </div>
+          <div class="value">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3>Local and responsive.</h3>
+            <p>Based in the GTA. We show up, in person when it helps.</p>
+          </div>
+          <div class="value">
+            <div class="icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <h3>Your data, handled with care.</h3>
+            <p>Sensitive client data is treated with strict confidentiality and clear, secure handling.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 7 — RESULTS
+         ============================================================ -->
+    <section class="alt" id="results">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Results</p>
+          <h2>Built to pay for itself.</h2>
+        </div>
+        <div class="results-grid reveal">
+          <!-- Testimonial placeholder -->
+          <figure class="quote-card">
+            <blockquote>“Placeholder quote. A short, specific line from a managing partner about hours saved and how the tool changed their week goes here.”</blockquote>
+            <figcaption>
+              <!-- TODO: replace with a real client quote and attribution -->
+              <div class="attr">[Client name, Firm, Title]</div>
+              <div class="note">Placeholder, replace with a real client quote.</div>
+            </figcaption>
+          </figure>
+          <!-- Metric tiles (all placeholders to replace) -->
+          <div class="metrics">
+            <div class="metric"><div class="big">10+ hrs</div><div class="label">saved per week, per firm</div></div>
+            <div class="metric"><div class="big">Weeks</div><div class="label">to first working tool</div></div>
+            <div class="metric"><div class="big">100%</div><div class="label">tailored to your firm</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION 8 — FINAL CALL TO ACTION
+         ============================================================ -->
+    <section class="final" id="contact">
+      <div class="dotgrid" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="final-grid">
+          <div class="reveal">
+            <h2>Ready to see what AI can do for your firm?</h2>
+            <p class="lead">Book a free 30-minute audit call. No pressure, no jargon, just a clear look at where AI can save your firm time and money.</p>
+            <!-- TODO: replace [your email] with the real address -->
+            <p class="email-line">Prefer email? Reach us at <a href="mailto:hello@akaconsulting.ca">[your email]</a>.</p>
+          </div>
+
+          <div class="reveal">
+            <!-- =========================================================
+                 CONTACT FORM
+                 Wire this to a backend or form service (Formspree,
+                 Basin, Netlify Forms, etc.). See handleSubmit() below —
+                 replace the simulated success with a real fetch().
+                 ========================================================= -->
+            <form class="form" id="contactForm" novalidate>
+              <div class="field" id="f-name">
+                <label for="in-name">Name</label>
+                <input type="text" id="in-name" name="name" autocomplete="name" required />
+                <span class="err">Please enter your name.</span>
+              </div>
+              <div class="field" id="f-firm">
+                <label for="in-firm">Firm name</label>
+                <input type="text" id="in-firm" name="firm" autocomplete="organization" required />
+                <span class="err">Please enter your firm name.</span>
+              </div>
+              <div class="field" id="f-email">
+                <label for="in-email">Email</label>
+                <input type="email" id="in-email" name="email" autocomplete="email" required />
+                <span class="err">Please enter a valid email address.</span>
+              </div>
+              <div class="field" id="f-message">
+                <label for="in-message">Message</label>
+                <textarea id="in-message" name="message" placeholder="A sentence about your firm and what you'd like to fix."></textarea>
+                <span class="err">Please add a short message.</span>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Book my free call</button>
+            </form>
+
+            <!-- Success state -->
+            <div class="form form-success" id="formSuccess" role="status" aria-live="polite">
+              <div class="check" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <h3>Thanks, we will be in touch.</h3>
+              <p>We will be in touch within one business day.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <div class="wordmark">A<span class="dot">.</span>K<span class="dot">.</span>A<span class="sub">Consulting</span></div>
+          <p class="tag">Custom AI tools, built for your firm. Serving law and accounting firms across the Greater Toronto Area.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#tools">Tools</a></li>
+            <li><a href="#how">How it works</a></li>
+            <li><a href="#why">Why us</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <!-- TODO: replace placeholders before launch -->
+            <li><a href="mailto:hello@akaconsulting.ca">[your email]</a></li>
+            <li><a href="#" target="_blank" rel="noopener">LinkedIn [your LinkedIn]</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 A.K.A Consulting. All rights reserved.</span>
+        <span>
+          <a href="#">Privacy</a>
+          &nbsp;·&nbsp;
+          Your data, handled with care.
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ============================================================
+    // 1. STICKY NAV — solid background after scrolling past hero
+    // ============================================================
+    const nav = document.getElementById('nav');
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ============================================================
+    // 2. MOBILE MENU TOGGLE
+    // ============================================================
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      const open = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', String(open));
+      hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    // Close the menu when a link is tapped
+    mobileMenu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      })
+    );
+
+    // ============================================================
+    // 3. SCROLL REVEAL — fade + rise as sections enter view
+    //    (skipped entirely when reduced motion is preferred)
+    // ============================================================
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    } else {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    // ============================================================
+    // 4. CONTACT FORM — validate, then show success state.
+    //    >>> TO GO LIVE: replace the simulated success block with a
+    //        real submission, e.g.:
+    //
+    //        await fetch('https://your-form-endpoint', {
+    //          method: 'POST',
+    //          headers: { 'Content-Type': 'application/json' },
+    //          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    //        });
+    // ============================================================
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+
+    const setError = (id, hasError) =>
+      document.getElementById(id).classList.toggle('invalid', hasError);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Use form.elements (not form.name — that collides with the form's own
+      // .name property and would always read empty).
+      const f = form.elements;
+      const name = f['name'].value.trim();
+      const firm = f['firm'].value.trim();
+      const email = f['email'].value.trim();
+      const message = f['message'].value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      setError('f-name', !name);
+      setError('f-firm', !firm);
+      setError('f-email', !emailOk);
+      setError('f-message', !message);
+
+      if (!name || !firm || !emailOk || !message) {
+        // Focus the first invalid field for accessibility
+        form.querySelector('.invalid input, .invalid textarea')?.focus();
+        return;
+      }
+
+      // --- Simulated success. Replace with the real fetch() above. ---
+      form.style.display = 'none';
+      success.classList.add('show');
+      success.focus?.();
+    });
+  </script>
+</body>
+</html>
