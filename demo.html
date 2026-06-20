@@ -3,120 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solaris Demo | Workflow Automation Console</title>
-  <meta name="description" content="Interactive Solaris Solutions demo showing AI intake, drafting, knowledge search, task routing, and ROI tracking." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><radialGradient id='g' cx='40%25' cy='38%25' r='62%25'><stop offset='0%25' stop-color='%23FFE9A8'/><stop offset='42%25' stop-color='%23FF9E1B'/><stop offset='100%25' stop-color='%23E8590C'/></radialGradient></defs><rect width='100' height='100' rx='24' fill='%23161109'/><circle cx='50' cy='50' r='28' fill='url(%23g)'/></svg>" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    :root{
-      --paper:#FBF6EC; --paper2:#F4ECDD; --ink:#1A1610; --soft:#6A5D4D; --muted:#9B8C78; --line:#E0D5C2;
-      --orange:#E8590C; --gold:#FF9E1B; --sun:#FFC94A; --green:#23C483; --red:#FF6B4A;
-      --app:#120F0A; --app2:#1B1610; --app3:#241C13; --appLine:rgba(255,255,255,.10); --cream:#FFF2D8;
-      --mono:'Space Mono',ui-monospace,Menlo,monospace; --sans:'Inter',system-ui,sans-serif;
-      --shadow:0 24px 70px rgba(26,22,16,.22);
-    }
-    *{box-sizing:border-box} html,body{height:100%} body{margin:0;background:radial-gradient(circle at 12% 8%,rgba(255,158,27,.16),transparent 28%),linear-gradient(135deg,var(--paper),#F8EFE0);font-family:var(--sans);color:var(--ink);overflow:hidden} button,input,textarea,select{font:inherit} button{cursor:pointer} a{text-decoration:none;color:inherit}
-    .app{height:100vh;display:grid;grid-template-columns:272px 1fr;background:var(--paper)}
-    .sidebar{background:var(--app);color:var(--cream);padding:22px;display:flex;flex-direction:column;border-right:1px solid var(--appLine);position:relative;overflow:hidden}.sidebar:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,#FFB84A,#E8590C 55%,transparent 70%);filter:blur(12px);opacity:.18;right:-120px;top:-110px}.brand{position:relative;display:flex;align-items:center;gap:12px;margin-bottom:26px}.sun{width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE9A8,#FF9E1B 46%,#E8590C);box-shadow:0 0 0 5px rgba(255,158,27,.12)}.brand strong{display:block;font-size:18px}.brand span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:rgba(255,242,216,.48)}.back{position:relative;display:block;margin-bottom:18px;padding:10px 12px;border:1px solid var(--appLine);border-radius:12px;color:rgba(255,242,216,.72);font-size:13px}.back:hover{color:white;border-color:rgba(255,158,27,.35)}
-    .nav-title{position:relative;font-family:var(--mono);font-size:10px;color:rgba(255,242,216,.44);letter-spacing:.14em;text-transform:uppercase;margin:12px 0}.nav-btn{position:relative;width:100%;display:flex;align-items:center;gap:12px;border:1px solid transparent;background:transparent;color:rgba(255,242,216,.66);border-radius:14px;padding:13px 12px;text-align:left;margin:4px 0;transition:.16s}.nav-btn:hover,.nav-btn.active{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.10);color:white}.nav-btn .ico{width:28px;height:28px;border-radius:10px;background:rgba(255,255,255,.06);display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:#FFB84A}.nav-btn small{display:block;color:rgba(255,242,216,.42);font-size:11px;margin-top:2px}.sidebar-foot{margin-top:auto;position:relative;border:1px solid var(--appLine);border-radius:18px;padding:16px;background:rgba(255,255,255,.04)}.sidebar-foot b{display:block;color:white;margin-bottom:4px}.sidebar-foot p{margin:0;color:rgba(255,242,216,.54);font-size:12px;line-height:1.5}
-    .main{height:100vh;display:grid;grid-template-rows:auto 1fr;min-width:0}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:0 30px;border-bottom:1px solid var(--line);background:rgba(251,246,236,.82);backdrop-filter:blur(12px)}.crumb{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}.topbar h1{font-size:22px;margin:3px 0 0}.actions{display:flex;gap:10px}.btn{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:11px 16px;font-weight:700}.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}.btn.primary:hover{background:var(--orange);border-color:var(--orange)}
-    .workspace{padding:24px 30px 34px;overflow:auto}.screen{display:none}.screen.active{display:block}.grid{display:grid;gap:18px}.grid.two{grid-template-columns:1fr 1fr}.grid.three{grid-template-columns:repeat(3,1fr)}.card{background:rgba(255,255,255,.46);border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 1px 0 rgba(255,255,255,.4)}.card.dark{background:var(--app);color:var(--cream);border-color:var(--appLine);box-shadow:var(--shadow)}.card h2{font-size:20px;margin:0 0 12px}.card h3{font-size:15px;margin:0 0 8px}.muted{color:var(--muted)}.label{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);font-weight:700}.stat{padding:20px;border-radius:20px;background:linear-gradient(180deg,#fff9ef,#f5ead8);border:1px solid var(--line)}.stat .num{font-size:34px;font-weight:800;letter-spacing:-.04em}.stat .cap{font-family:var(--mono);font-size:10px;text-transform:uppercase;color:var(--muted);letter-spacing:.1em}.pipeline{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stage{min-height:280px;background:#fff8ec;border:1px solid var(--line);border-radius:18px;padding:12px}.stage-title{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--soft);text-transform:uppercase;margin-bottom:10px}.ticket{background:white;border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:10px}.ticket b{display:block;font-size:14px}.ticket p{margin:6px 0 10px;color:var(--soft);font-size:13px}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;font-family:var(--mono);font-size:10px;text-transform:uppercase;border:1px solid rgba(232,89,12,.25);background:rgba(232,89,12,.08);color:var(--orange);font-weight:700}.pill.green{border-color:rgba(35,196,131,.28);background:rgba(35,196,131,.10);color:#07824e}.input,textarea,select{width:100%;border:1px solid var(--line);background:#fffaf1;border-radius:14px;padding:13px;color:var(--ink);outline:none}textarea{min-height:160px;resize:vertical;line-height:1.55}.input:focus,textarea:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 4px rgba(232,89,12,.10)}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.output{background:var(--app);color:var(--cream);border-radius:18px;padding:18px;min-height:240px;border:1px solid var(--appLine);white-space:pre-wrap}.source{border-left:3px solid var(--gold);padding-left:12px;margin-top:14px;color:#FFE1A8;font-family:var(--mono);font-size:12px}.tasks{display:grid;gap:10px}.task{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:#fff8ec;border:1px solid var(--line);padding:12px;border-radius:14px}.check{width:26px;height:26px;border-radius:50%;background:rgba(35,196,131,.12);color:#07824e;display:grid;place-items:center;font-weight:900}.demo-note{background:#fff8ec;border:1px dashed rgba(232,89,12,.35);border-radius:16px;padding:14px;color:var(--soft);font-size:14px;margin-bottom:18px}.meter{height:10px;border-radius:999px;background:#eadcc6;overflow:hidden}.meter span{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--gold));border-radius:999px}.mobile-top{display:none}
-    @media(max-width:1050px){body{overflow:auto}.app{height:auto;min-height:100vh;grid-template-columns:1fr}.sidebar{display:none}.mobile-top{display:flex;position:sticky;top:0;z-index:8;background:var(--app);color:var(--cream);padding:12px;gap:8px;overflow:auto}.mobile-top button{white-space:nowrap}.topbar{height:auto;padding:16px;align-items:flex-start;flex-direction:column}.workspace{padding:16px}.grid.two,.grid.three,.split,.pipeline{grid-template-columns:1fr}.actions{flex-wrap:wrap}}
-  </style>
+  <meta http-equiv="refresh" content="0; url=demo/" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <title>Redirecting to Solaris Demo</title>
+  <script>window.location.replace('demo/?v=3');</script>
 </head>
-<body>
-  <div class="app">
-    <aside class="sidebar">
-      <div class="brand"><span class="sun"></span><div><strong>Solaris</strong><span>AI WORKFLOW DEMO</span></div></div>
-      <a href="index.html" class="back">← Back to main website</a>
-      <div class="nav-title">Demo tools</div>
-      <button class="nav-btn active" data-screen="overview"><span class="ico">01</span><div>Control room<small>Pipeline + live status</small></div></button>
-      <button class="nav-btn" data-screen="intake"><span class="ico">02</span><div>AI intake<small>Turn messy messages into records</small></div></button>
-      <button class="nav-btn" data-screen="draft"><span class="ico">03</span><div>Drafting engine<small>Email + proposal assistant</small></div></button>
-      <button class="nav-btn" data-screen="knowledge"><span class="ico">04</span><div>Knowledge search<small>Ask company docs</small></div></button>
-      <button class="nav-btn" data-screen="automation"><span class="ico">05</span><div>Automation queue<small>Tasks, approvals, routing</small></div></button>
-      <button class="nav-btn" data-screen="roi"><span class="ico">06</span><div>ROI tracker<small>Hours saved + value</small></div></button>
-      <div class="sidebar-foot"><b>What this is</b><p>A clickable mock product demo. Real client builds connect to their inbox, docs, forms, spreadsheets, CRM, and approval rules.</p></div>
-    </aside>
-
-    <div class="main">
-      <div class="mobile-top">
-        <button class="nav-btn active" data-screen="overview">Control</button><button class="nav-btn" data-screen="intake">Intake</button><button class="nav-btn" data-screen="draft">Drafting</button><button class="nav-btn" data-screen="knowledge">Knowledge</button><button class="nav-btn" data-screen="automation">Queue</button><button class="nav-btn" data-screen="roi">ROI</button>
-      </div>
-      <header class="topbar">
-        <div><div class="crumb" id="crumb">CONTROL ROOM</div><h1 id="title">AI operations console for a growing business</h1></div>
-        <div class="actions"><button class="btn" onclick="resetDemo()">Reset demo</button><button class="btn primary" onclick="simulateRun()">Run automation</button></div>
-      </header>
-
-      <main class="workspace">
-        <section class="screen active" id="overview">
-          <div class="demo-note">This page is intentionally separate from the Solaris marketing site. It uses the same warm cream/orange palette, but behaves like a product demo so prospects can see what the tools actually do.</div>
-          <div class="grid three" style="margin-bottom:18px">
-            <div class="stat"><div class="num" id="statHours">12.5h</div><div class="cap">Estimated admin saved / week</div></div>
-            <div class="stat"><div class="num" id="statDrafts">31</div><div class="cap">Drafts generated this week</div></div>
-            <div class="stat"><div class="num" id="statReview">8</div><div class="cap">Items waiting for review</div></div>
-          </div>
-          <div class="pipeline">
-            <div class="stage"><div class="stage-title"><span>New intake</span><span>3</span></div><div class="ticket"><b>Website lead</b><p>Asked for office cleaning quote but missing square footage.</p><span class="pill">qualify</span></div><div class="ticket"><b>Vendor onboarding</b><p>W-9 and insurance certificate received.</p><span class="pill green">ready</span></div></div>
-            <div class="stage"><div class="stage-title"><span>AI drafted</span><span>4</span></div><div class="ticket"><b>Quote follow-up</b><p>Drafted a polite nudge for an old proposal.</p><span class="pill green">review</span></div><div class="ticket"><b>Support reply</b><p>Found refund policy and wrote answer.</p><span class="pill">approve</span></div></div>
-            <div class="stage"><div class="stage-title"><span>Human review</span><span>2</span></div><div class="ticket"><b>Discount request</b><p>Above threshold. Needs owner approval.</p><span class="pill">blocked</span></div></div>
-            <div class="stage"><div class="stage-title"><span>Completed</span><span>18</span></div><div class="ticket"><b>Meeting notes</b><p>Decisions and tasks pushed to queue.</p><span class="pill green">done</span></div><div class="ticket"><b>Client intake</b><p>CRM row created and email drafted.</p><span class="pill green">done</span></div></div>
-          </div>
-        </section>
-
-        <section class="screen" id="intake">
-          <div class="split">
-            <div class="card"><span class="label">Paste messy inbound request</span><h2>AI intake parser</h2><textarea id="intakeText">Hi, we run a 42-person landscaping company in Mississauga. We get a lot of quote requests and invoice follow-ups. Our admin person spends hours copying emails into sheets. Can you help automate this? Ideally want something before next month.</textarea><button class="btn primary" style="margin-top:12px" onclick="parseIntake()">Extract structured record</button></div>
-            <div class="card dark"><span class="label">Structured output</span><h2 style="color:var(--cream)">Lead record + next steps</h2><div class="output" id="intakeOut"></div></div>
-          </div>
-        </section>
-
-        <section class="screen" id="draft">
-          <div class="split">
-            <div class="card"><span class="label">Choose scenario</span><h2>Drafting engine</h2><select id="draftType"><option value="qualify">Qualifying questions for new lead</option><option value="followup">Follow-up on a quote</option><option value="handoff">Internal handoff note</option><option value="proposal">Mini proposal summary</option></select><textarea id="draftContext" style="margin-top:12px">Prospect: Mississauga landscaping company. Pain: quote requests and invoice follow-ups. Goal: reduce admin copy/paste before next month.</textarea><button class="btn primary" style="margin-top:12px" onclick="makeDraft()">Generate draft</button></div>
-            <div class="card dark"><span class="label">Human-reviewed draft</span><h2 style="color:var(--cream)">Ready to edit before sending</h2><div class="output" id="draftOut"></div></div>
-          </div>
-        </section>
-
-        <section class="screen" id="knowledge">
-          <div class="card"><span class="label">Ask across company files</span><h2>Knowledge search with source-backed answers</h2><div style="display:flex;gap:10px;margin-top:14px"><input id="searchQ" class="input" placeholder="Try: refund, pricing, onboarding, invoice, quote" value="What follow-up should we send for overdue invoices?"/><button class="btn primary" onclick="askDocs()">Search docs</button></div></div>
-          <div class="grid two" style="margin-top:18px"><div class="card dark"><span class="label">Answer</span><div class="output" id="knowledgeOut"></div></div><div class="card"><span class="label">Retrieved sources</span><div id="sources"></div></div></div>
-        </section>
-
-        <section class="screen" id="automation">
-          <div class="grid two">
-            <div class="card"><span class="label">Workflow rules</span><h2>Automation queue</h2><div class="tasks" id="taskList"></div><button class="btn primary" style="margin-top:12px" onclick="completeTask()">Complete top task</button></div>
-            <div class="card dark"><span class="label">Automation log</span><h2 style="color:var(--cream)">What the tool did</h2><div class="output" id="logOut"></div></div>
-          </div>
-        </section>
-
-        <section class="screen" id="roi">
-          <div class="grid two">
-            <div class="card"><span class="label">Adjust assumptions</span><h2>Simple ROI calculator</h2><label>Admin hours saved per week</label><input class="input" id="hours" type="number" value="12" min="1" max="80" oninput="calcRoi()"/><br/><br/><label>Loaded hourly cost ($)</label><input class="input" id="rate" type="number" value="38" min="15" max="200" oninput="calcRoi()"/><br/><br/><label>Monthly support/build cost ($)</label><input class="input" id="cost" type="number" value="1500" min="0" max="20000" oninput="calcRoi()"/></div>
-            <div class="card"><span class="label">Estimated value</span><h2 id="roiHeadline">$0 / month</h2><p class="muted" id="roiText"></p><div style="margin-top:20px"><div class="meter"><span id="roiMeter" style="width:50%"></span></div></div><div class="demo-note" style="margin-top:20px">Numbers are illustrative only. Real ROI needs your actual wages, process volume, error rate, and adoption.</div></div>
-          </div>
-        </section>
-      </main>
-    </div>
-  </div>
-
-  <script>
-    const titles={overview:['CONTROL ROOM','AI operations console for a growing business'],intake:['AI INTAKE','Turn messy inbound requests into clean records'],draft:['DRAFTING ENGINE','Generate useful drafts from business context'],knowledge:['KNOWLEDGE SEARCH','Ask company docs and get source-backed answers'],automation:['AUTOMATION QUEUE','Route work without losing human control'],roi:['ROI TRACKER','Estimate whether the automation is worth building']};
-    function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('active',b.dataset.screen===id));document.getElementById('crumb').textContent=titles[id][0];document.getElementById('title').textContent=titles[id][1];}
-    document.querySelectorAll('.nav-btn').forEach(b=>b.addEventListener('click',()=>showScreen(b.dataset.screen)));
-    function parseIntake(){const t=document.getElementById('intakeText').value;const industry=(t.match(/landscaping|cleaning|accounting|bookkeeping|construction|law/i)||['Growing business'])[0];const city=(t.match(/Toronto|Mississauga|Brampton|Scarborough|North York|GTA/i)||['GTA'])[0];const size=(t.match(/\d+[- ]?person|\d+ employees|\d+ staff/i)||['Unknown size'])[0];document.getElementById('intakeOut').textContent=`Company type: ${industry}\nLocation: ${city}\nTeam size: ${size}\n\nPain points detected:\n• Manual copying from email into spreadsheets\n• Quote request follow-up\n• Invoice / AR follow-up\n\nUrgency: before next month\nRecommended first build: intake + follow-up workflow\n\nNext questions:\n1. Which inbox receives requests?\n2. What spreadsheet/CRM tracks them now?\n3. Who approves outgoing replies?\n4. What makes a lead qualified?`;}
-    function makeDraft(){const type=document.getElementById('draftType').value;const ctx=document.getElementById('draftContext').value;const drafts={qualify:`Subject: Quick questions before we recommend the right automation\n\nThanks for the context. Based on what you shared, the first workflow worth mapping is likely quote intake plus invoice follow-up.\n\nTo scope it properly, can you send:\n1. Where new requests arrive today\n2. The spreadsheet or system they get copied into\n3. The 3-5 fields your admin always needs\n4. Who reviews replies before they go out\n\nOnce we have that, we can outline a fixed-scope first build.\n\nContext used:\n${ctx}`,followup:`Subject: Checking in on the quote\n\nJust checking in on the quote we sent over. If timing, scope, or pricing needs to be adjusted, we can revise it.\n\nIf you are still interested, the easiest next step is a short call to confirm the workflow and decide what should be automated first.`,handoff:`Internal handoff\n\nProspect appears to be a good fit for a first automation build.\n\nDetected pain: admin copy/paste, quote requests, invoice follow-ups.\nLikely buyer: owner/operator or operations manager.\nSuggested demo: intake parser + follow-up queue.\nRisk: unclear current stack. Ask about inbox, spreadsheet/CRM, and approval process.`,proposal:`Mini proposal summary\n\nFirst build: Quote intake and invoice follow-up assistant.\nScope: capture inbound requests, extract key fields, create a review queue, draft follow-up emails, and produce a weekly admin report.\nSuccess metric: fewer manual copy/paste steps and faster response time for new requests.`};document.getElementById('draftOut').textContent=drafts[type];}
-    const docMap={refund:['Refund policy','Refund exceptions require manager approval. Standard refunds can be handled by support if the request is inside the approved window.','/Policies/Support/refunds.md'],pricing:['Pricing rules','Discounts over 10% require owner approval. Quotes expire after 14 days unless renewed.','/Sales/pricing-rules.md'],onboarding:['Client onboarding SOP','Collect signed agreement, billing contact, source systems, owner, and success metric before kickoff.','/Ops/client-onboarding.md'],invoice:['AR follow-up SOP','Send a friendly reminder at 7 days overdue, firmer note at 14 days, and owner escalation at 30 days.','/Finance/ar-follow-up.md'],quote:['Quote handling SOP','New quote requests should be qualified for budget, timeline, location, and decision-maker before booking a call.','/Sales/quote-intake.md']};
-    function askDocs(){const q=document.getElementById('searchQ').value.toLowerCase();const key=Object.keys(docMap).find(k=>q.includes(k))||'quote';const d=docMap[key];document.getElementById('knowledgeOut').textContent=`${d[1]}\n\nSuggested action:\nDraft the next message, tag it for human review, and attach the source policy so the reviewer can verify it.`;document.getElementById('sources').innerHTML=`<div class="ticket"><b>${d[0]}</b><p>${d[2]}</p><span class="pill green">source found</span></div><div class="ticket"><b>Related workflow</b><p>Automation queue can create the follow-up task and assign it to the right owner.</p><span class="pill">related</span></div>`;}
-    let tasks=['Extract fields from new lead email','Draft quote qualification reply','Route discount exception to owner','Create AR reminder for overdue invoice','Summarize today’s open workflows'];
-    function renderTasks(){document.getElementById('taskList').innerHTML=tasks.map((t,i)=>`<div class="task"><div class="check">${i+1}</div><div><b>${t}</b><div class="muted">${i===0?'Ready to run':'Waiting in queue'}</div></div><span class="pill ${i>2?'green':''}">${i===0?'next':'queued'}</span></div>`).join('');}
-    function completeTask(){if(tasks.length){const done=tasks.shift();renderTasks();document.getElementById('logOut').textContent=`Completed: ${done}\n\nHuman control preserved: any external message remains in review until approved.\n\nRemaining queue: ${tasks.length} items.`;}}
-    function simulateRun(){showScreen('automation');completeTask();document.getElementById('statHours').textContent='13.1h';document.getElementById('statDrafts').textContent='34';document.getElementById('statReview').textContent='7';}
-    function calcRoi(){const h=+document.getElementById('hours').value||0,r=+document.getElementById('rate').value||0,c=+document.getElementById('cost').value||0;const gross=h*r*4.33,net=gross-c;document.getElementById('roiHeadline').textContent=`$${Math.round(gross).toLocaleString()} / month gross value`;document.getElementById('roiText').textContent=`After a $${c.toLocaleString()} monthly cost assumption, estimated net impact is $${Math.round(net).toLocaleString()} per month. Break-even requires about ${Math.ceil(c/(r*4.33)||0)} hours saved per week.`;document.getElementById('roiMeter').style.width=Math.max(8,Math.min(100,(gross/(c||1))*50))+'%';}
-    function resetDemo(){tasks=['Extract fields from new lead email','Draft quote qualification reply','Route discount exception to owner','Create AR reminder for overdue invoice','Summarize today’s open workflows'];renderTasks();parseIntake();makeDraft();askDocs();calcRoi();document.getElementById('logOut').textContent='No automation run yet. Click “Run automation” or complete the top task to see the log.';showScreen('overview');}
-    renderTasks();parseIntake();makeDraft();askDocs();calcRoi();document.getElementById('logOut').textContent='No automation run yet. Click “Run automation” or complete the top task to see the log.';
-  </script>
+<body style="font-family:Inter,system-ui,sans-serif;background:#FBF6EC;color:#1A1610;padding:40px;">
+  <p>Loading the updated Solaris demo… <a href="demo/?v=3">Click here if it does not open.</a></p>
 </body>
 </html>
