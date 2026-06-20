@@ -338,14 +338,15 @@
     /* ============================================================
        REVEAL
        ============================================================ */
-    .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+    /* Content must be visible even if browser animation observers fail. */
+    .reveal { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
     .reveal.in { opacity: 1; transform: none; }
-    .reveal.in > * { animation: rise .6s ease both; }
-    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(2) { animation-delay: .06s; }
-    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(3) { animation-delay: .12s; }
-    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(4) { animation-delay: .18s; }
-    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(5) { animation-delay: .24s; }
-    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(6) { animation-delay: .30s; }
+    .reveal.in > * { animation: none; }
+    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(2) { animation-delay: 0s; }
+    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(3) { animation-delay: 0s; }
+    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(4) { animation-delay: 0s; }
+    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(5) { animation-delay: 0s; }
+    .reveal.in :is(.card,.step,.vrow,.metric,.eitem):nth-child(6) { animation-delay: 0s; }
     @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
